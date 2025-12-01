@@ -15,17 +15,17 @@ mongoose.connect(process.env.MONGO_URI)
 .then(()=> console.log("DB connected"))
 .catch(()=> console.log(err));
 
-const Todo = mongoose.mode1("Todo", new mongoose.Schema({
+const Todo = mongoose.model("Todo", new mongoose.Schema({
     text: String
 }));
 
-app.get('/todos', async(requestAnimationFrame, res)=>{
+app.get('/todos', async(req, res)=>{
     res.json(await Todo.find());
 })
 
 app.post('/todos', async(req, res)=>{
     const todo = await todo.create({
-        text : req.bosy.text
+        text : req.body.text
     })
 
     res.json(todo)
